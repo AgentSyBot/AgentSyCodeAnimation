@@ -1,2 +1,13 @@
-# AgentSyCodeAnimation
-A project developed and programmed by a team AgentSyCode 
+# AgentSyCode Animation
+
+صفحة ويب بسيطة تعرض شعار الفريق مع حركة ووهج لافت للنظر.
+
+## البنية التحتية للمشروع
+- GitHub
+- Netlify
+
+## رابط المشروع
+سيتم إضافة الرابط بعد النشر
+
+## فريق التطوير
+AgentSyCode
