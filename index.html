@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AgentSyCode Animation</title>
+
+<!-- استيراد خطوط Google -->
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
 <style>
   body {
     margin: 0;
@@ -14,18 +18,24 @@
     align-items: center;
     flex-direction: column;
     overflow: hidden;
-    font-family: Arial, sans-serif;
+    font-family: 'Cairo', sans-serif;
     color: #fff;
   }
 
-  /* الشعار */
-  .logo {
-    width: 150px;
-    height: 150px;
-    background: url('https://i.imgur.com/TixsklP.png') no-repeat center/contain;
+  /* حاوية الشعار */
+  .logo-container {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
     opacity: 0;
     transform: translateY(100px);
     animation: riseGlow 2s forwards;
+  }
+
+  .logo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
 
   @keyframes riseGlow {
@@ -53,6 +63,7 @@
     text-align: center;
     font-size: 16px;
     color: #fff;
+    line-height: 1.5;
   }
 
   .footer-text a {
@@ -67,16 +78,33 @@
     text-decoration: underline;
     color: #fff;
   }
+
+  /* الخط العربي */
+  .arabic-text {
+    font-family: 'Cairo', sans-serif;
+    direction: rtl;
+  }
+
+  /* الخط الإنجليزي */
+  .english-text {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+  }
 </style>
 </head>
+
 <body>
 
-<div class="logo"></div>
+<!-- شعار الفريق -->
+<div class="logo-container">
+  <img src="https://i.imgur.com/TixsklP.png" alt="AgentSyCode Logo">
+</div>
 
-<div class="footer-text">
-  هذا الموقع من تطوير فريق
+<!-- نص اسفل الصفحة -->
+<div class="footer-text arabic-text">
+  هذا الموقع من تطوير فريق  
   <br>
-  <a href="https://t.me/AgentSyCode" target="_blank">AgentSyCode</a>
+  <a class="english-text" href="https://t.me/AgentSyCode" target="_blank">AgentSyCode</a>
 </div>
 
 </body>
