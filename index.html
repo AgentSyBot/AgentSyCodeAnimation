@@ -1,1 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgentSyCode Animation</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    color: #fff;
+  }
 
+  /* الشعار */
+  .logo {
+    width: 150px;
+    height: 150px;
+    background: url('assets/logo.png') no-repeat center/contain;
+    opacity: 0;
+    transform: translateY(100px);
+    animation: riseGlow 2s forwards;
+  }
+
+  @keyframes riseGlow {
+    0% {
+      opacity: 0;
+      transform: translateY(100px) scale(0.5);
+      filter: drop-shadow(0 0 0px #ffd700);
+    }
+    50% {
+      opacity: 1;
+      transform: translateY(-10px) scale(1.05);
+      filter: drop-shadow(0 0 20px #ffd700);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: drop-shadow(0 0 15px #ffd700);
+    }
+  }
+
+  /* نص اسفل الصفحة */
+  .footer-text {
+    position: absolute;
+    bottom: 20px;
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+  }
+
+  .footer-text a {
+    color: #ffd700;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 5px;
+    transition: all 0.3s ease;
+  }
+
+  .footer-text a:hover {
+    text-decoration: underline;
+    color: #fff;
+  }
+</style>
+</head>
+<body>
+
+<div class="logo"></div>
+
+<div class="footer-text">
+  هذا الموقع من تطوير فريق
+  <br>
+  <a href="https://t.me/AgentSyCode" target="_blank">AgentSyCode</a>
+</div>
+
+</body>
+  </html>
