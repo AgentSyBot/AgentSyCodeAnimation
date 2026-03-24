@@ -5,106 +5,204 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AgentSyCode Animation</title>
 
-<!-- استيراد خطوط Google -->
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<!-- خطوط -->
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Montserrat:wght@900&display=swap" rel="stylesheet">
 
 <style>
-  body {
-    margin: 0;
-    height: 100vh;
-    background-color: #000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    overflow: hidden;
-    font-family: 'Cairo', sans-serif;
-    color: #fff;
-  }
+/* =================== Reset =================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  /* حاوية الشعار */
+/* =================== Body =================== */
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background-color: #e7e6e6;
+  background-image: url("https://www.transparenttextures.com/patterns/concrete-wall.png");
+  font-family: 'Cairo', sans-serif;
+}
+
+/* =================== Container =================== */
+.container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+/* =================== Title =================== */
+.title {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.title h1 {
+  font-size: 20vmin;
+  font-weight: 900;
+  font-family: "Montserrat", sans-serif;
+  color: black;
+}
+
+/* =================== Ghost Design =================== */
+.ghost {
+  width: 8vmin;
+  height: 12vmin;
+  background-color: #e7e6e6;
+  background-image: radial-gradient(ellipse at 35% 40%, #000 8%, transparent 0%),
+                    radial-gradient(ellipse at 65% 40%, #000 8%, transparent 0%),
+                    radial-gradient(ellipse at 50% 60%, #000 8%, transparent 0%);
+  border-radius: 100% / 70% 70% 0% 0%;
+  transform: translateX(100em) rotateZ(-90deg);
+  position: relative;
+  opacity: 0.9;
+  mix-blend-mode: exclusion;
+  animation: ghostMove 4s ease-out infinite;
+}
+@keyframes ghostMove {
+  0% { transform: translateX(30em) rotateZ(-90deg); }
+  100% { transform: translateX(-35em) rotateZ(-90deg); }
+}
+.ghost div {
+  position: absolute;
+  width: 20%;
+  background-color: #e7e6e6;
+}
+.ghost div:nth-of-type(1) {
+  height: 7vmin;
+  left: 0;
+  bottom: -6vmin;
+  border-radius: 100% / 0% 0% 50% 50%;
+}
+.ghost div:nth-of-type(2),
+.ghost div:nth-of-type(4) {
+  height: 4vmin;
+  left: 20%;
+  bottom: -3vmin;
+  border-radius: 100% / 50% 50% 0% 0%;
+  background-color: transparent;
+}
+.ghost div:nth-of-type(3) {
+  height: 4vmin;
+  left: 40%;
+  bottom: -3.95vmin;
+  border-radius: 100% / 0% 0% 60% 60%;
+  background-color: #e7e6e6;
+}
+.ghost div:nth-of-type(4) { left: 60%; }
+.ghost div:nth-of-type(5) {
+  height: 3vmin;
+  left: 80%;
+  bottom: -2.9vmin;
+  border-radius: 100% / 0% 0% 70% 70%;
+  background-color: #e7e6e6;
+}
+
+/* =================== Footer / Logo =================== */
+.footer {
+  position: absolute;
+  bottom: 20px;
+  text-align: center;
+}
+.footer .arabic-text {
+  font-family: 'Cairo', sans-serif;
+  font-size: 1rem;
+  color: black;
+  display: block;
+  margin-bottom: 10px;
+}
+.footer .english-text {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 1.2rem;
+  color: #000;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 10px;
+}
+.footer .english-text:hover {
+  color: #5eb3fd;
+}
+
+/* الشعار أسفل النص */
+.logo-container {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+.logo-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* =================== Responsive =================== */
+@media (max-width: 768px) {
+  .title h1 {
+    font-size: 15vmin;
+  }
+  .ghost {
+    width: 10vmin;
+    height: 15vmin;
+  }
+  .footer .arabic-text {
+    font-size: 0.9rem;
+  }
+  .footer .english-text {
+    font-size: 1rem;
+  }
   .logo-container {
-    width: 400px;
-    height: 400px;
-    margin-bottom: 20px;
-    opacity: 0;
-    transform: translateY(100px);
-    animation: riseGlow 2s forwards;
+    width: 150px;
+    height: 150px;
   }
-
-  .logo-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+}
+@media (max-width: 480px) {
+  .title h1 {
+    font-size: 12vmin;
   }
-
-  @keyframes riseGlow {
-    0% {
-      opacity: 0;
-      transform: translateY(100px) scale(0.5);
-      filter: drop-shadow(0 0 0px #ffd700);
-    }
-    50% {
-      opacity: 1;
-      transform: translateY(-10px) scale(1.05);
-      filter: drop-shadow(0 0 20px #ffd700);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-      filter: drop-shadow(0 0 15px #ffd700);
-    }
+  .ghost {
+    width: 8vmin;
+    height: 12vmin;
   }
-
-  /* نص اسفل الصفحة */
-  .footer-text {
-    position: absolute;
-    bottom: 20px;
-    text-align: center;
-    font-size: 16px;
-    color: #fff;
-    line-height: 1.5;
+  .logo-container {
+    width: 120px;
+    height: 120px;
   }
-
-  .footer-text a {
-    color: #ffd700;
-    text-decoration: none;
-    font-weight: bold;
-    margin-left: 5px;
-    transition: all 0.3s ease;
-  }
-
-  .footer-text a:hover {
-    text-decoration: underline;
-    color: #fff;
-  }
-
-  /* الخط العربي */
-  .arabic-text {
-    font-family: 'Cairo', sans-serif;
-    direction: rtl;
-  }
-
-  /* الخط الإنجليزي */
-  .english-text {
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
-  }
+}
 </style>
 </head>
-
 <body>
 
-<!-- شعار الفريق -->
-<div class="logo-container">
-  <img src="https://i.imgur.com/TixsklP.png" alt="AgentSyCode Logo">
-</div>
+<div class="container">
+  <!-- العنوان -->
+  <div class="title">
+    <h1>AGENTSY</h1>
+  </div>
 
-<!-- نص اسفل الصفحة -->
-<div class="footer-text arabic-text">
-  هذا الموقع من تطوير فريق  
-  <br>
-  <a class="english-text" href="https://t.me/AgentSyCode" target="_blank">AgentSyCode</a>
+  <!-- تصميم Ghost -->
+  <div class="ghost">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <!-- Footer + الشعار -->
+  <div class="footer arabic-text">
+    هذا الموقع من تطوير فريق  
+    <a class="english-text" href="https://t.me/AgentSyCode" target="_blank">AgentSyCode</a>
+    <div class="logo-container">
+      <img src="https://i.imgur.com/TixsklP.png" alt="AgentSyCode Logo">
+    </div>
+  </div>
 </div>
 
 </body>
